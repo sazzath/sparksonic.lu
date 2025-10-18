@@ -128,7 +128,7 @@ export default function Home() {
                   href={`/services/${service.id}`}
                   className="inline-flex items-center text-primary hover:text-primary-dark font-medium"
                 >
-                  Learn More <ArrowRight size={18} className="ml-2" />
+                  {t('services.learnMore')} <ArrowRight size={18} className="ml-2" />
                 </a>
               </div>
             ))}
