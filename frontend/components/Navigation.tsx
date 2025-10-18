@@ -2,18 +2,34 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, X, Phone, Mail, Globe } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState('en');
 
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/#services' },
-    { name: 'Projects', href: '/#projects' },
+    { name: 'Projects', href: '/projects' },
     { name: 'About', href: '/#about' },
     { name: 'Contact', href: '/#contact' },
   ];
+
+  const languages = [
+    { code: 'en', name: 'English', flag: '🇬🇧' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'lb', name: 'Lëtzebuergesch', flag: '🇱🇺' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'pt', name: 'Português', flag: '🇵🇹' },
+  ];
+
+  const handleLanguageChange = (langCode: string) => {
+    setCurrentLang(langCode);
+    // Here you would implement actual translation logic
+    console.log('Language changed to:', langCode);
+  };
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -31,7 +47,28 @@ const Navigation = () => {
             </a>
           </div>
           <div className="hidden md:flex items-center gap-4">
-            <span>⭐ 5.0 Google Rating</span>
+            {/* Language Selector */}
+            <div className="relative group">
+              <button className="flex items-center gap-2 hover:underline">
+                <Globe size={16} />
+                {languages.find(l => l.code === currentLang)?.flag} {languages.find(l => l.code === currentLang)?.name}
+              </button>
+              <div className="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => handleLanguageChange(lang.code)}
+                    className={`w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 ${
+                      currentLang === lang.code ? 'bg-gray-50 font-semibold' : ''
+                    }`}
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+            <span className="text-white/50">|</span>
             <Link href="/portal" className="hover:underline">
               Customer Portal
             </Link>
