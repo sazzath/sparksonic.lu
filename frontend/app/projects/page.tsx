@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Calendar, MapPin, Tag } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import '@/lib/i18n';
+import '@/lib/i18n-unified';
 
 // Sample projects data - In production, this would come from your backend API
 const allProjects = [
