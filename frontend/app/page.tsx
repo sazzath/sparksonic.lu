@@ -195,7 +195,7 @@ export default function Home() {
       <section className="py-20 bg-gray-50" data-testid="reviews-section">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-dark mb-4">What Our Clients Say</h2>
+            <h2 className="text-4xl font-bold text-dark mb-4">{t('reviews.title')}</h2>
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
@@ -208,7 +208,7 @@ export default function Home() {
                 </span>
               )}
             </div>
-            <p className="text-gray-600">Trusted by homeowners and businesses across Luxembourg</p>
+            <p className="text-gray-600">{t('reviews.trusted')}</p>
           </div>
 
           {reviews && reviews.reviews && (
