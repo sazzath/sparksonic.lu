@@ -290,7 +290,7 @@ async def submit_contact(contact: ContactForm, background_tasks: BackgroundTasks
 # ===========================
 
 @app.post("/api/quotes")
-async def create_quote(quote: QuoteRequest):
+async def create_quote(quote: QuoteRequest, background_tasks: BackgroundTasks):
     quote_id = f"QT-{str(uuid.uuid4())[:8].upper()}"
     
     quote_data = {
@@ -308,7 +308,7 @@ async def create_quote(quote: QuoteRequest):
     
     quotes_collection.insert_one(quote_data)
     
-    # Send email notification
+    # Send email notification in background
     email_body = f"""
     <html>
         <body>
@@ -323,7 +323,7 @@ async def create_quote(quote: QuoteRequest):
         </body>
     </html>
     """
-    send_email(SMTP_TO_EMAIL, f"New Quote Request: {quote_id}", email_body)
+    background_tasks.add_task(send_email, SMTP_TO_EMAIL, f"New Quote Request: {quote_id}", email_body)
     
     return {"message": "Quote request submitted", "quote_id": quote_id}
 
