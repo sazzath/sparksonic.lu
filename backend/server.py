@@ -169,7 +169,7 @@ async def health_check():
 # ===========================
 
 @app.post("/api/auth/register")
-async def register(user: UserRegister):
+async def register(user: UserRegister, background_tasks: BackgroundTasks):
     # Check if user exists
     if users_collection.find_one({"email": user.email}):
         raise HTTPException(status_code=400, detail="Email already registered")
@@ -190,7 +190,7 @@ async def register(user: UserRegister):
     
     users_collection.insert_one(user_data)
     
-    # Send welcome email
+    # Send welcome email in background
     email_body = f"""
     <html>
         <body>
@@ -203,7 +203,7 @@ async def register(user: UserRegister):
         </body>
     </html>
     """
-    send_email(user.email, "Welcome to Sparksonic", email_body)
+    background_tasks.add_task(send_email, user.email, "Welcome to Sparksonic", email_body)
     
     return {
         "message": "Registration successful",
