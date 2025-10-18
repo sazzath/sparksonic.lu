@@ -149,7 +149,7 @@ export default function Portal() {
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('portal.emailAddress')}</label>
                 <input
                   type="email"
                   required
@@ -162,7 +162,7 @@ export default function Portal() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('portal.password')}</label>
                 <input
                   type="password"
                   required
@@ -185,7 +185,7 @@ export default function Portal() {
                 className="w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors"
                 data-testid="login-submit-btn"
               >
-                Sign In
+                {t('portal.signInBtn')}
               </button>
             </form>
 
@@ -194,13 +194,13 @@ export default function Portal() {
                 onClick={() => { setShowLogin(false); setShowRegister(true); setAuthError(''); setAuthSuccess(''); }}
                 className="text-primary hover:text-primary-dark font-medium"
               >
-                Don't have an account? <span className="underline">Create one</span>
+                {t('portal.dontHaveAccount')} <span className="underline">{t('portal.createOne')}</span>
               </button>
             </div>
 
             <div className="mt-6 text-center">
               <Link href="/" className="text-gray-600 hover:text-gray-800 text-sm">
-                ← Back to Home
+                ← {t('portal.backToHome')}
               </Link>
             </div>
           </div>
