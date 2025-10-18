@@ -247,7 +247,7 @@ const resources = {
       },
       contact: {
         title: 'Contactez-Nous',
-        subtitle: 'Besoin d'un électricien agréé au Luxembourg? Contactez-nous aujourd'hui!',
+        subtitle: "Besoin d'un électricien agréé au Luxembourg? Contactez-nous aujourd'hui!",
         name: 'Nom Complet',
         email: 'Adresse Email',
         phone: 'Numéro de Téléphone',
