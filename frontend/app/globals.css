@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: #007BFF;
-  --primary-dark: #0056b3;
-  --dark: #222222;
-}
+@layer base {
+  :root {
+    --primary: #007BFF;
+    --primary-dark: #0056b3;
+    --dark: #222222;
+  }
 
-* {
-  scroll-behavior: smooth;
-}
+  * {
+    scroll-behavior: smooth;
+  }
 
-body {
-  @apply bg-white text-gray-900;
+  body {
+    @apply bg-white text-gray-900;
+  }
 }
 
 /* Custom animations */
