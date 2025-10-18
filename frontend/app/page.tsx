@@ -404,12 +404,12 @@ export default function Home() {
             {/* Contact Info & Map */}
             <div className="space-y-8">
               <div className="bg-white rounded-xl shadow-lg p-8">
-                <h3 className="text-2xl font-bold text-dark mb-6">Contact Information</h3>
+                <h3 className="text-2xl font-bold text-dark mb-6">{t('contact.contactInfo')}</h3>
                 <div className="space-y-4">
                   <a href="tel:+352661315657" className="flex items-start gap-4 hover:text-primary transition-colors">
                     <Phone className="text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <div className="font-semibold">Phone</div>
+                      <div className="font-semibold">{t('contact.phone')}</div>
                       <div className="text-gray-600">+352 661 315 657</div>
                     </div>
                   </a>
@@ -417,7 +417,7 @@ export default function Home() {
                   <a href="mailto:info@sparksonic.lu" className="flex items-start gap-4 hover:text-primary transition-colors">
                     <Mail className="text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <div className="font-semibold">Email</div>
+                      <div className="font-semibold">{t('contact.email')}</div>
                       <div className="text-gray-600">info@sparksonic.lu</div>
                     </div>
                   </a>
@@ -425,14 +425,14 @@ export default function Home() {
                   <div className="flex items-start gap-4">
                     <MapPin className="text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <div className="font-semibold">Location</div>
+                      <div className="font-semibold">{t('contact.location')}</div>
                       <div className="text-gray-600">Luxembourg City, Luxembourg</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h4 className="font-semibold mb-2">Business Hours</h4>
+                  <h4 className="font-semibold mb-2">{t('contact.businessHours')}</h4>
                   <div className="text-gray-600 space-y-1">
                     <div>Mon - Fri: 8:00 AM - 6:00 PM</div>
                     <div>Sat: 9:00 AM - 4:00 PM</div>
