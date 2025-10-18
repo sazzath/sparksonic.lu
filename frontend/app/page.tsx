@@ -47,52 +47,50 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary to-blue-600 text-white">
-        <div className="absolute inset-0 opacity-10">
-          <Image
-            src="https://images.unsplash.com/photo-1754620906571-9ba64bd3ffb4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwxfHxlbGVjdHJpY2lhbiUyMHNvbGFyJTIwcGFuZWxzfGVufDB8fHx8MTc2MDc4Njg1MXww&ixlib=rb-4.1.0&q=85"
-            alt="Professional electrical services"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        
-        <div className="container mx-auto px-4 py-24 md:py-32 relative z-10">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
+      <section className="relative bg-gradient-to-br from-primary to-blue-600 text-white overflow-hidden">
+        <div className="container mx-auto px-4 py-20 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <span className="text-white/90 font-medium">
+                  {reviews ? `${reviews.rating} (${reviews.total_reviews} reviews)` : '5.0 Google Rating'}
+                </span>
               </div>
-              <span className="text-white/90 font-medium">
-                {reviews ? `${reviews.rating} (${reviews.total_reviews} reviews)` : '5.0 Google Rating'}
-              </span>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                {t('hero.title')}
+              </h1>
+              
+              <p className="text-xl md:text-2xl mb-8 text-white/90">
+                {t('hero.subtitle')}
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="#contact"
+                  className="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center"
+                  data-testid="get-quote-btn"
+                >
+                  {t('hero.ctaQuote')}
+                </a>
+                <a
+                  href="#projects"
+                  className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors text-center"
+                >
+                  {t('hero.ctaProjects')}
+                </a>
+              </div>
             </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Luxembourg's Trusted Electrical & Energy Experts
-            </h1>
-            
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
-              Professional electrical services, solar panels, EV chargers, and energy solutions across Luxembourg
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#contact"
-                className="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center"
-                data-testid="get-quote-btn"
-              >
-                Get a Free Quote
-              </a>
-              <a
-                href="#projects"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors text-center"
-              >
-                View Projects
-              </a>
+
+            {/* Right Side - Image Slider */}
+            <div className="relative h-[400px] lg:h-[500px]">
+              <HeroSlider />
             </div>
           </div>
         </div>
