@@ -123,7 +123,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <a
-                  href="#contact"
+                  href={`/services/${service.id}`}
                   className="inline-flex items-center text-primary hover:text-primary-dark font-medium"
                 >
                   Learn More <ArrowRight size={18} className="ml-2" />
