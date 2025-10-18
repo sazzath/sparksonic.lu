@@ -189,7 +189,7 @@ const resources = {
         successMessage: 'Merci! Nous vous contacterons dans les 24 heures avec votre devis.',
         errorMessage: 'Désolé, une erreur est survenue. Appelez-nous directement au +352 661 315 657.',
         readyToStart: 'Prêt à Commencer?',
-        contactToday: 'Contactez-nous aujourd'hui pour une consultation et un devis gratuits.',
+        contactToday: "Contactez-nous aujourd'hui pour une consultation et un devis gratuits.",
       },
       portal: {
         welcomeBack: 'Bon Retour',
