@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { authAPI, quotesAPI, ticketsAPI } from '@/lib/api';
 import { FileText, Ticket, LogOut, User, Package, BarChart3, Clock, CheckCircle, AlertCircle, Mail, Phone } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import '@/lib/i18n';
+import '@/lib/i18n-unified';
 
 export default function Portal() {
   const { t } = useTranslation();
