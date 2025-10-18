@@ -112,7 +112,7 @@ const Navigation = () => {
               href="/#contact"
               className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition-colors"
             >
-              Get Quote
+              {t('nav.getQuote')}
             </Link>
           </div>
 
