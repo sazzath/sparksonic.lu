@@ -1,19 +1,26 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail, Globe } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import '../lib/i18n';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t, i18n } = useTranslation();
   const [currentLang, setCurrentLang] = useState('en');
 
+  useEffect(() => {
+    setCurrentLang(i18n.language || 'en');
+  }, [i18n.language]);
+
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/#services' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'About', href: '/#about' },
-    { name: 'Contact', href: '/#contact' },
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.services'), href: '/#services' },
+    { name: t('nav.projects'), href: '/projects' },
+    { name: t('nav.about'), href: '/#about' },
+    { name: t('nav.contact'), href: '/#contact' },
   ];
 
   const languages = [
@@ -26,9 +33,9 @@ const Navigation = () => {
   ];
 
   const handleLanguageChange = (langCode: string) => {
+    i18n.changeLanguage(langCode);
     setCurrentLang(langCode);
-    // Here you would implement actual translation logic
-    console.log('Language changed to:', langCode);
+    localStorage.setItem('preferredLanguage', langCode);
   };
 
   return (
