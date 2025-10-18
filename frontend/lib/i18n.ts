@@ -227,7 +227,7 @@ const resources = {
         noTickets: 'Aucun ticket pour le moment',
         requestQuote: 'Demander un devis',
         createTicket: 'Créer un ticket',
-        needHelp: 'Besoin d'Aide?',
+        needHelp: "Besoin d'Aide?",
         callUs: 'Appelez-Nous',
         emailUs: 'Envoyez-nous un Email',
         support: 'Support',
