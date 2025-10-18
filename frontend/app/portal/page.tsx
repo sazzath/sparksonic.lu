@@ -137,8 +137,8 @@ export default function Portal() {
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <User className="text-white" size={32} />
               </div>
-              <h2 className="text-3xl font-bold text-dark mb-2">Welcome Back</h2>
-              <p className="text-gray-600">Sign in to access your customer portal</p>
+              <h2 className="text-3xl font-bold text-dark mb-2">{t('portal.welcomeBack')}</h2>
+              <p className="text-gray-600">{t('portal.signIn')}</p>
             </div>
 
             {authSuccess && (
