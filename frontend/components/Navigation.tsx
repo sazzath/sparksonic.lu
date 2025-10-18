@@ -29,6 +29,9 @@ const Navigation = () => {
     { code: 'en', name: 'English', flag: '🇬🇧' },
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'lb', name: 'Lëtzebuergesch', flag: '🇱🇺' },
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'pt', name: 'Português', flag: '🇵🇹' },
   ];
 
   const handleLanguageChange = (langCode: string) => {
