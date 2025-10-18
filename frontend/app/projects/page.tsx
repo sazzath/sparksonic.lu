@@ -164,6 +164,7 @@ const allProjects = [
 ];
 
 export default function ProjectsPage() {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [filteredProjects, setFilteredProjects] = useState(allProjects);
 
@@ -182,9 +183,9 @@ export default function ProjectsPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary to-blue-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Projects</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('projects.title')}</h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            Showcasing our quality electrical and energy installations across Luxembourg
+            {t('projects.subtitle')}
           </p>
         </div>
       </section>
@@ -208,7 +209,7 @@ export default function ProjectsPage() {
             ))}
           </div>
           <div className="text-center mt-4 text-gray-600">
-            Showing {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
+            {t('projects.showing')} {filteredProjects.length} {filteredProjects.length !== 1 ? t('projects.projects') : t('projects.project')}
           </div>
         </div>
       </section>
