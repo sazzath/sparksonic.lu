@@ -12,6 +12,7 @@ import i18n from '@/lib/i18nConfig';
 
 export default function Home() {
   const { t } = useTranslation();
+  const [mounted, setMounted] = useState(false);
   const [reviews, setReviews] = useState<any>(null);
   const [contactForm, setContactForm] = useState({
     name: '',
@@ -21,6 +22,10 @@ export default function Home() {
     service: '',
   });
   const [submitStatus, setSubmitStatus] = useState('');
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     // Fetch Google reviews
