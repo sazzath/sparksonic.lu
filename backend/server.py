@@ -134,6 +134,14 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)) 
 
 def send_email(to_email: str, subject: str, body: str, html: bool = True) -> bool:
     """Send email via SMTP - non-blocking with timeout"""
+    
+    # If SMTP is disabled, just log the email
+    if not SMTP_ENABLED:
+        print(f"[EMAIL LOG] To: {to_email}")
+        print(f"[EMAIL LOG] Subject: {subject}")
+        print(f"[EMAIL LOG] Body: {body[:200]}...")
+        return True
+    
     try:
         # Log email attempt
         print(f"Attempting to send email to {to_email}: {subject}")
