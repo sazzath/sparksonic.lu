@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import '../lib/i18n';
+import '@/lib/i18n';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
