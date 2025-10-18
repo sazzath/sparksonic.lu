@@ -344,7 +344,7 @@ async def get_user_quotes(payload: dict = Depends(verify_token)):
 # ===========================
 
 @app.post("/api/tickets")
-async def create_ticket(ticket: TicketCreate, payload: dict = Depends(verify_token)):
+async def create_ticket(ticket: TicketCreate, background_tasks: BackgroundTasks, payload: dict = Depends(verify_token)):
     user = users_collection.find_one({"email": payload["sub"]})
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
@@ -365,7 +365,7 @@ async def create_ticket(ticket: TicketCreate, payload: dict = Depends(verify_tok
     
     tickets_collection.insert_one(ticket_data)
     
-    # Send email notification
+    # Send email notification in background
     email_body = f"""
     <html>
         <body>
@@ -379,7 +379,7 @@ async def create_ticket(ticket: TicketCreate, payload: dict = Depends(verify_tok
         </body>
     </html>
     """
-    send_email(SMTP_TO_EMAIL, f"New Ticket: {ticket_id}", email_body)
+    background_tasks.add_task(send_email, SMTP_TO_EMAIL, f"New Ticket: {ticket_id}", email_body)
     
     return {"message": "Ticket created", "ticket_id": ticket_id}
 
