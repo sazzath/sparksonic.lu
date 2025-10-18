@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Luxembourg's Trusted Electrical & Energy Experts",
+    "subtitle": "Professional electrical services, solar panels, EV chargers, and energy solutions across Luxembourg",
+    "cta_quote": "Get a Free Quote",
+    "cta_projects": "View Projects",
+    "rating": "5.0 Google Rating"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "portal": "Customer Portal",
+    "login": "Login"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive electrical and energy solutions for your needs"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Need a licensed electrician in Luxembourg? Contact us today!",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "message": "Your Message",
+    "service": "Service Needed",
+    "submit": "Send Message",
+    "success": "Thank you! We'll contact you soon."
+  },
+  "footer": {
+    "tagline": "Luxembourg's premier electrical and energy services provider",
+    "rights": "All rights reserved.",
+    "quick_links": "Quick Links",
+    "contact_info": "Contact Info"
+  }
+}

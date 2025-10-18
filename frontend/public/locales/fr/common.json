@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Experts Électriques et Énergétiques de Confiance au Luxembourg",
+    "subtitle": "Services électriques professionnels, panneaux solaires, chargeurs VE et solutions énergétiques",
+    "cta_quote": "Demander un Devis Gratuit",
+    "cta_projects": "Voir les Projets",
+    "rating": "Note Google 5.0"
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "projects": "Projets",
+    "about": "À Propos",
+    "contact": "Contact",
+    "portal": "Portail Client",
+    "login": "Connexion"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Solutions électriques et énergétiques complètes"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Besoin d'un électricien agréé au Luxembourg? Contactez-nous!",
+    "name": "Nom Complet",
+    "email": "Adresse Email",
+    "phone": "Numéro de Téléphone",
+    "message": "Votre Message",
+    "service": "Service Requis",
+    "submit": "Envoyer",
+    "success": "Merci! Nous vous contacterons bientôt."
+  },
+  "footer": {
+    "tagline": "Premier fournisseur de services électriques et énergétiques au Luxembourg",
+    "rights": "Tous droits réservés.",
+    "quick_links": "Liens Rapides",
+    "contact_info": "Coordonnées"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Luxemburgs Vertrauenswürdige Elektro- und Energieexperten",
+    "subtitle": "Professionelle Elektrodienstleistungen, Solarmodule, EV-Ladegeräte und Energielösungen",
+    "cta_quote": "Kostenloses Angebot",
+    "cta_projects": "Projekte Ansehen",
+    "rating": "5.0 Google Bewertung"
+  },
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "projects": "Projekte",
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "portal": "Kundenportal",
+    "login": "Anmelden"
+  },
+  "services": {
+    "title": "Unsere Dienstleistungen",
+    "subtitle": "Umfassende Elektro- und Energielösungen"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Benötigen Sie einen lizenzierten Elektriker in Luxemburg?",
+    "name": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer",
+    "message": "Ihre Nachricht",
+    "service": "Benötigter Service",
+    "submit": "Nachricht Senden",
+    "success": "Danke! Wir werden uns bald bei Ihnen melden."
+  },
+  "footer": {
+    "tagline": "Luxemburgs führender Anbieter von Elektro- und Energiedienstleistungen",
+    "rights": "Alle Rechte vorbehalten.",
+    "quick_links": "Schnelllinks",
+    "contact_info": "Kontaktinformationen"
+  }
+}
