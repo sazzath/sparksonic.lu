@@ -8,7 +8,7 @@ import { services } from '@/lib/services';
 import { reviewsAPI, contactAPI } from '@/lib/api';
 import HeroSlider from '@/components/HeroSlider';
 import { useTranslation } from 'react-i18next';
-import '../lib/i18n';
+import '@/lib/i18n';
 
 export default function Home() {
   const { t } = useTranslation();
