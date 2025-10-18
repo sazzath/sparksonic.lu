@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import i18n from '@/lib/i18nConfig';
+import i18n from '@/lib/i18n-unified';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +38,8 @@ const Navigation = () => {
     i18n.changeLanguage(langCode);
     setCurrentLang(langCode);
     localStorage.setItem('i18nextLng', langCode);
-    window.location.reload(); // Force reload to apply translations
+    // Force update translations
+    window.dispatchEvent(new Event('languageChanged'));
   };
 
   return (
