@@ -19,13 +19,16 @@ const getApiUrl = () => {
     }
   }
   
-  // Server-side rendering - use env variable or default
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api';
+  // Server-side rendering - always use /api for production builds
+  // This will be routed correctly by the ingress
+  return '/api';
 };
 
 const API_URL = getApiUrl();
 
-console.log('API_URL configured as:', API_URL);
+if (typeof window !== 'undefined') {
+  console.log('API_URL configured as:', API_URL);
+}
 
 const api = axios.create({
   baseURL: API_URL,
