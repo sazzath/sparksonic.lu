@@ -118,7 +118,6 @@ export default function Portal() {
       alert('Failed to create ticket');
     }
   };
-
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
