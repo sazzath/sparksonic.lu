@@ -6,20 +6,21 @@ import axios from 'axios';
 const getApiUrl = () => {
   // If we're in the browser
   if (typeof window !== 'undefined') {
-    // Check if we're in production (not localhost)
-    const isProduction = !window.location.hostname.includes('localhost') && 
-                        !window.location.hostname.includes('127.0.0.1');
+    const hostname = window.location.hostname;
     
-    if (isProduction) {
-      // In production, use /api prefix (ingress will route to backend)
-      return '/api';
-    } else {
+    // Check if we're in LOCAL development (localhost or 127.0.0.1)
+    const isLocalDev = hostname.includes('localhost') || hostname.includes('127.0.0.1');
+    
+    if (isLocalDev) {
       // In local development, use direct backend URL
       return 'http://localhost:8001/api';
+    } else {
+      // In production/preview, use /api prefix (ingress will route to backend)
+      return '/api';
     }
   }
   
-  // Server-side rendering - always use /api for production builds
+  // Server-side rendering - use /api for production builds
   // This will be routed correctly by the ingress
   return '/api';
 };
@@ -27,7 +28,7 @@ const getApiUrl = () => {
 const API_URL = getApiUrl();
 
 if (typeof window !== 'undefined') {
-  console.log('API_URL configured as:', API_URL);
+  console.log('API_URL configured as:', API_URL, 'for hostname:', window.location.hostname);
 }
 
 const api = axios.create({
