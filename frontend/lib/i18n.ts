@@ -258,7 +258,7 @@ const resources = {
         success: 'Merci! Nous vous contacterons bientôt.',
         error: 'Désolé, une erreur est survenue. Veuillez réessayer ou nous appeler directement.',
         contactInfo: 'Coordonnées',
-        businessHours: 'Heures d'Ouverture',
+        businessHours: "Heures d'Ouverture",
         location: 'Lieu',
       },
       footer: {
