@@ -311,6 +311,7 @@ const serviceDetails: any = {
 };
 
 export default function ServiceDetailPage() {
+  const { t } = useTranslation();
   const params = useParams();
   const slug = params.slug as string;
   const service = serviceDetails[slug];
@@ -351,7 +352,7 @@ export default function ServiceDetailPage() {
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Service Not Found</h1>
           <Link href="/#services" className="text-primary hover:underline">
-            Back to Services
+            {t('servicePage.backToServices')}
           </Link>
         </div>
       </div>
@@ -365,7 +366,7 @@ export default function ServiceDetailPage() {
         <div className="container mx-auto px-4">
           <Link href="/#services" className="inline-flex items-center gap-2 text-white/90 hover:text-white mb-6">
             <ArrowLeft size={20} />
-            Back to Services
+            {t('servicePage.backToServices')}
           </Link>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -377,13 +378,13 @@ export default function ServiceDetailPage() {
                   href="#quote"
                   className="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                 >
-                  Get Free Quote
+                  {t('servicePage.getQuote')}
                 </a>
                 <a
                   href="tel:+352661315657"
                   className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors"
                 >
-                  Call Us
+                  {t('servicePage.callUs')}
                 </a>
               </div>
             </div>
@@ -403,11 +404,11 @@ export default function ServiceDetailPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">About This Service</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('servicePage.aboutService')}</h2>
             <p className="text-lg text-gray-700 mb-8">{service.longDescription}</p>
             
             <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-lg mb-8">
-              <div className="font-semibold text-xl text-primary mb-2">Pricing</div>
+              <div className="font-semibold text-xl text-primary mb-2">{t('servicePage.pricing')}</div>
               <div className="text-lg">{service.pricing}</div>
             </div>
           </div>
@@ -418,7 +419,7 @@ export default function ServiceDetailPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">Key Benefits</h2>
+            <h2 className="text-3xl font-bold mb-12 text-center">{t('servicePage.benefits')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {service.benefits.map((benefit: string, idx: number) => (
                 <div key={idx} className="flex items-start gap-3 bg-white p-4 rounded-lg shadow">
@@ -435,7 +436,7 @@ export default function ServiceDetailPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">Our Process</h2>
+            <h2 className="text-3xl font-bold mb-12 text-center">{t('servicePage.process')}</h2>
             <div className="space-y-6">
               {service.process.map((item: any, idx: number) => (
                 <div key={idx} className="flex gap-6">
@@ -457,7 +458,7 @@ export default function ServiceDetailPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold mb-12 text-center">{t('servicePage.faqs')}</h2>
             <div className="space-y-6">
               {service.faqs.map((faq: any, idx: number) => (
                 <div key={idx} className="bg-white p-6 rounded-lg shadow">
@@ -474,14 +475,14 @@ export default function ServiceDetailPage() {
       <section id="quote" className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold mb-6 text-center">Get a Free Quote</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center">{t('servicePage.requestQuote')}</h2>
             <p className="text-gray-600 text-center mb-8">
-              Fill out the form below and we'll get back to you within 24 hours.
+              {t('servicePage.contactDetails')}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('servicePage.fullName')} *</label>
                 <input
                   type="text"
                   required
@@ -493,7 +494,7 @@ export default function ServiceDetailPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t('servicePage.email')} *</label>
                   <input
                     type="email"
                     required
@@ -504,7 +505,7 @@ export default function ServiceDetailPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t('servicePage.phone')} *</label>
                   <input
                     type="tel"
                     required
@@ -516,7 +517,7 @@ export default function ServiceDetailPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('servicePage.location')} *</label>
                 <input
                   type="text"
                   required
@@ -528,7 +529,7 @@ export default function ServiceDetailPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Project Details *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">{t('servicePage.projectDetails')} *</label>
                 <textarea
                   required
                   rows={5}
@@ -545,23 +546,23 @@ export default function ServiceDetailPage() {
                 className="w-full bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-dark transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {submitStatus === 'sending' ? (
-                  'Sending...'
+                  t('servicePage.sending')
                 ) : (
                   <>
-                    Request Quote <Send size={20} />
+                    {t('servicePage.requestQuoteBtn')} <Send size={20} />
                   </>
                 )}
               </button>
 
               {submitStatus === 'success' && (
                 <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-center">
-                  Thank you! We'll contact you within 24 hours with your quote.
+                  {t('servicePage.successMessage')}
                 </div>
               )}
 
               {submitStatus === 'error' && (
                 <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-center">
-                  Sorry, something went wrong. Please call us directly at +352 661 315 657.
+                  {t('servicePage.errorMessage')}
                 </div>
               )}
             </form>
@@ -573,10 +574,10 @@ export default function ServiceDetailPage() {
       <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Get Started?
+            {t('servicePage.readyToStart')}
           </h2>
           <p className="text-xl mb-8 text-white/90">
-            Contact us today for a free consultation and quote.
+            {t('servicePage.contactToday')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
