@@ -4,38 +4,38 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import '@/lib/i18n';
+import i18n from '@/lib/i18nConfig';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [currentLang, setCurrentLang] = useState('en');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setCurrentLang(i18n.language || 'en');
-  }, [i18n.language]);
+  }, []);
 
   const navigation = [
-    { name: t('nav.home'), href: '/' },
-    { name: t('nav.services'), href: '/#services' },
-    { name: t('nav.projects'), href: '/projects' },
-    { name: t('nav.about'), href: '/#about' },
-    { name: t('nav.contact'), href: '/#contact' },
+    { name: mounted ? t('nav.home') : 'Home', href: '/' },
+    { name: mounted ? t('nav.services') : 'Services', href: '/#services' },
+    { name: mounted ? t('nav.projects') : 'Projects', href: '/projects' },
+    { name: mounted ? t('nav.about') : 'About', href: '/#about' },
+    { name: mounted ? t('nav.contact') : 'Contact', href: '/#contact' },
   ];
 
   const languages = [
     { code: 'en', name: 'English', flag: '🇬🇧' },
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-    { code: 'lb', name: 'Lëtzebuergesch', flag: '🇱🇺' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'pt', name: 'Português', flag: '🇵🇹' },
   ];
 
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
     setCurrentLang(langCode);
-    localStorage.setItem('preferredLanguage', langCode);
+    localStorage.setItem('i18nextLng', langCode);
+    window.location.reload(); // Force reload to apply translations
   };
 
   return (
