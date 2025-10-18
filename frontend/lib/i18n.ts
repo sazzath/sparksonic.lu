@@ -233,7 +233,7 @@ const resources = {
         support: 'Support',
         viewAllQuotes: 'Voir Tous les Devis',
         trackManage: 'Suivez et gérez vos demandes de devis',
-        getHelp: 'Obtenez de l'aide avec vos services',
+        getHelp: "Obtenez de l'aide avec vos services",
         createSupportTicket: 'Créer un Ticket de Support',
         subject: 'Sujet',
         description: 'Description',
