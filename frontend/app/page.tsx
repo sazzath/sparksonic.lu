@@ -246,29 +246,29 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-dark mb-6">About Sparksonic</h2>
+              <h2 className="text-4xl font-bold text-dark mb-6">{t('about.title')}</h2>
               <p className="text-lg text-gray-700 mb-4">
-                SparkSonic SARLS is Luxembourg's premier electrical and energy services provider, dedicated to delivering excellence in every project.
+                {t('about.description1')}
               </p>
               <p className="text-gray-700 mb-6">
-                With years of experience and a commitment to sustainability, we specialize in solar panel installations, EV charging solutions, smart home automation, and comprehensive electrical services for both residential and commercial clients.
+                {t('about.description2')}
               </p>
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div>
                   <div className="text-4xl font-bold text-primary mb-2">500+</div>
-                  <div className="text-gray-600">Projects Completed</div>
+                  <div className="text-gray-600">{t('about.projectsCompleted')}</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-primary mb-2">5.0</div>
-                  <div className="text-gray-600">Google Rating</div>
+                  <div className="text-gray-600">{t('about.googleRating')}</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-                  <div className="text-gray-600">Emergency Support</div>
+                  <div className="text-gray-600">{t('about.emergencySupport')}</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-primary mb-2">Licensed</div>
-                  <div className="text-gray-600">& Insured</div>
+                  <div className="text-4xl font-bold text-primary mb-2">{t('about.licensed')}</div>
+                  <div className="text-gray-600">{t('about.insured')}</div>
                 </div>
               </div>
             </div>
