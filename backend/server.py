@@ -240,7 +240,7 @@ async def get_current_user(payload: dict = Depends(verify_token)):
 # ===========================
 
 @app.post("/api/contact")
-async def submit_contact(contact: ContactForm):
+async def submit_contact(contact: ContactForm, background_tasks: BackgroundTasks):
     # Save to database
     contact_data = {
         "name": contact.name,
@@ -253,7 +253,7 @@ async def submit_contact(contact: ContactForm):
     }
     contacts_collection.insert_one(contact_data)
     
-    # Send email to Sparksonic
+    # Send emails in background
     email_body = f"""
     <html>
         <body>
@@ -267,7 +267,7 @@ async def submit_contact(contact: ContactForm):
         </body>
     </html>
     """
-    send_email(SMTP_TO_EMAIL, f"New Contact: {contact.name}", email_body)
+    background_tasks.add_task(send_email, SMTP_TO_EMAIL, f"New Contact: {contact.name}", email_body)
     
     # Send confirmation to customer
     customer_email = f"""
@@ -281,7 +281,7 @@ async def submit_contact(contact: ContactForm):
         </body>
     </html>
     """
-    send_email(contact.email, "Thank you for contacting Sparksonic", customer_email)
+    background_tasks.add_task(send_email, contact.email, "Thank you for contacting Sparksonic", customer_email)
     
     return {"message": "Contact form submitted successfully"}
 
