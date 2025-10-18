@@ -102,19 +102,6 @@ const Footer = () => {
                 <span className="text-sm">Luxembourg City<br />Luxembourg</span>
               </div>
             </div>
-
-            {/* Language Switcher */}
-            <div className="mt-6">
-              <h4 className="text-sm font-semibold mb-2">Language</h4>
-              <select className="bg-gray-800 text-white px-3 py-2 rounded text-sm border border-gray-700">
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="lb">Lëtzebuergesch</option>
-                <option value="es">Español</option>
-                <option value="pt">Português</option>
-              </select>
-            </div>
           </div>
         </div>
 
