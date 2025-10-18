@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import '../lib/i18n';
 
 export default function Home() {
+  const { t } = useTranslation();
   const [reviews, setReviews] = useState<any>(null);
   const [contactForm, setContactForm] = useState({
     name: '',
