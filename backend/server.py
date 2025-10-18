@@ -26,7 +26,7 @@ app = FastAPI(title="Sparksonic API", version="1.0.0")
 # CORS Configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("FRONTEND_URL", "http://localhost:3000"), "https://sparksonic.lu"],
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", os.getenv("FRONTEND_URL", "http://localhost:3000"), "https://sparksonic.lu"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
