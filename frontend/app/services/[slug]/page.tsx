@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { CheckCircle, ArrowLeft, Send } from 'lucide-react';
 import Link from 'next/link';
 import { quotesAPI } from '@/lib/api';
+import { useTranslation } from 'react-i18next';
+import '../../lib/i18n';
 
 // Service data with detailed information
 const serviceDetails: any = {
