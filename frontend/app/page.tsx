@@ -145,8 +145,8 @@ export default function Home() {
       <section id="projects" className="py-20" data-testid="projects-section">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-dark mb-4">Recent Projects</h2>
-            <p className="text-xl text-gray-600">Showcasing our quality work across Luxembourg</p>
+            <h2 className="text-4xl font-bold text-dark mb-4">{t('projects.recentProjects')}</h2>
+            <p className="text-xl text-gray-600">{t('projects.showcasing')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
