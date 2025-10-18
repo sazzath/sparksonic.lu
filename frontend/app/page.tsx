@@ -6,6 +6,9 @@ import { useState, useEffect } from 'react';
 import { Star, ArrowRight, CheckCircle, Phone, Mail, MapPin, Send } from 'lucide-react';
 import { services } from '@/lib/services';
 import { reviewsAPI, contactAPI } from '@/lib/api';
+import HeroSlider from '@/components/HeroSlider';
+import { useTranslation } from 'react-i18next';
+import '../lib/i18n';
 
 export default function Home() {
   const [reviews, setReviews] = useState<any>(null);
