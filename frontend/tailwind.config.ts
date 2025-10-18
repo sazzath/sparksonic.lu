@@ -18,10 +18,6 @@ const config: Config = {
           DEFAULT: "#222222",
           light: "#333333",
         },
-        sparksonic: {
-          blue: "#007BFF",
-          grey: "#222222",
-        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -30,4 +26,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
