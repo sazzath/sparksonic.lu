@@ -82,9 +82,12 @@ export default function Portal() {
       setShowRegister(false);
       setShowLogin(true);
       setAuthError('');
-      alert(`Registration successful! Your Customer ID: ${response.data.customer_id}`);
+      setLoginForm({ email: registerForm.email, password: '' });
+      alert(`Registration successful! Your Customer ID: ${response.data.customer_id}. Please login with your email and password.`);
     } catch (error: any) {
-      setAuthError(error.response?.data?.detail || 'Registration failed');
+      console.error('Registration error:', error);
+      const errorMessage = error.response?.data?.detail || error.message || 'Registration failed. Please try again.';
+      setAuthError(errorMessage);
     }
   };
 
