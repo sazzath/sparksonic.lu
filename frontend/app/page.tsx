@@ -300,7 +300,7 @@ export default function Home() {
               <form onSubmit={handleContactSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
+                    {t('contact.name')} *
                   </label>
                   <input
                     type="text"
@@ -314,7 +314,7 @@ export default function Home() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
+                    {t('contact.email')} *
                   </label>
                   <input
                     type="email"
@@ -328,7 +328,7 @@ export default function Home() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
+                    {t('contact.phone')}
                   </label>
                   <input
                     type="tel"
@@ -341,7 +341,7 @@ export default function Home() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Needed
+                    {t('contact.service')}
                   </label>
                   <select
                     value={contactForm.service}
@@ -360,7 +360,7 @@ export default function Home() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                    {t('contact.message')} *
                   </label>
                   <textarea
                     required
@@ -379,23 +379,23 @@ export default function Home() {
                   data-testid="contact-submit-btn"
                 >
                   {submitStatus === 'sending' ? (
-                    'Sending...'
+                    t('contact.sending')
                   ) : (
                     <>
-                      Send Message <Send size={20} />
+                      {t('contact.submit')} <Send size={20} />
                     </>
                   )}
                 </button>
 
                 {submitStatus === 'success' && (
                   <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg" data-testid="contact-success-message">
-                    Thank you! We'll contact you soon.
+                    {t('contact.success')}
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
                   <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
-                    Sorry, something went wrong. Please try again or call us directly.
+                    {t('contact.error')}
                   </div>
                 )}
               </form>
