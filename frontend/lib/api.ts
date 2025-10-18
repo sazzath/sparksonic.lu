@@ -1,11 +1,29 @@
 import axios from 'axios';
 
-// Use relative URL for API calls - this will work with the ingress routing
-// In preview/production: /api routes to backend:8001
-// In local dev: need to proxy or use full URL
-const API_URL = typeof window !== 'undefined' 
-  ? '/api'  // Browser - use relative URL (works with ingress)
-  : process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api';  // Server-side
+// Determine the API URL based on environment
+// In production/preview: Use /api which gets routed by ingress to backend:8001
+// In local development: Use the backend URL directly
+const getApiUrl = () => {
+  // If we're in the browser
+  if (typeof window !== 'undefined') {
+    // Check if we're in production (not localhost)
+    const isProduction = !window.location.hostname.includes('localhost') && 
+                        !window.location.hostname.includes('127.0.0.1');
+    
+    if (isProduction) {
+      // In production, use /api prefix (ingress will route to backend)
+      return '/api';
+    } else {
+      // In local development, use direct backend URL
+      return 'http://localhost:8001/api';
+    }
+  }
+  
+  // Server-side rendering - use env variable or default
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api';
+};
+
+const API_URL = getApiUrl();
 
 console.log('API_URL configured as:', API_URL);
 
