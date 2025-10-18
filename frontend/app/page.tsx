@@ -100,9 +100,9 @@ export default function Home() {
       <section id="services" className="py-20 bg-gray-50" data-testid="services-section">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-dark mb-4">Our Services</h2>
+            <h2 className="text-4xl font-bold text-dark mb-4">{t('services.title')}</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive electrical and energy solutions for residential and commercial properties
+              {t('services.subtitle')}
             </p>
           </div>
 
