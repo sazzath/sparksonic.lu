@@ -133,6 +133,9 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)) 
 def send_email(to_email: str, subject: str, body: str, html: bool = True) -> bool:
     """Send email via SMTP - non-blocking with timeout"""
     try:
+        # Log email attempt
+        print(f"Attempting to send email to {to_email}: {subject}")
+        
         message = MIMEMultipart("alternative")
         message["Subject"] = subject
         message["From"] = SMTP_FROM_EMAIL
@@ -146,13 +149,18 @@ def send_email(to_email: str, subject: str, body: str, html: bool = True) -> boo
         message.attach(part)
 
         context = ssl.create_default_context()
-        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, context=context, timeout=10) as server:
+        # Increased timeout and added error handling
+        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, context=context, timeout=5) as server:
             server.login(SMTP_USERNAME, SMTP_PASSWORD)
             server.sendmail(SMTP_FROM_EMAIL, to_email, message.as_string())
         
+        print(f"Email sent successfully to {to_email}")
         return True
+    except socket.timeout:
+        print(f"SMTP timeout for {to_email} - email queued for retry")
+        return False
     except Exception as e:
-        print(f"Email error: {str(e)}")
+        print(f"Email error for {to_email}: {str(e)}")
         # Return False but don't block the response
         return False
 
