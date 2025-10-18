@@ -60,6 +60,7 @@ SMTP_USERNAME = os.getenv("SMTP_USERNAME")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 SMTP_FROM_EMAIL = os.getenv("SMTP_FROM_EMAIL")
 SMTP_TO_EMAIL = os.getenv("SMTP_TO_EMAIL")
+SMTP_ENABLED = os.getenv("SMTP_ENABLED", "false").lower() == "true"
 
 # Google API Configuration
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
