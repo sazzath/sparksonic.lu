@@ -151,7 +151,7 @@ const Navigation = () => {
               className="block mt-2 bg-primary text-white px-6 py-2 rounded-lg text-center"
               onClick={() => setIsOpen(false)}
             >
-              {t('nav.getQuote')}
+              {mounted ? t('nav.getQuote') : 'Get Quote'}
             </Link>
           </div>
         )}
