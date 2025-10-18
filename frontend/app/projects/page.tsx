@@ -274,7 +274,7 @@ export default function ProjectsPage() {
                   </div>
 
                   <button className="mt-4 w-full bg-gray-100 hover:bg-primary hover:text-white text-dark px-4 py-2 rounded-lg font-medium transition-all">
-                    View Details
+                    {t('projects.viewDetails')}
                   </button>
                 </div>
               </div>
