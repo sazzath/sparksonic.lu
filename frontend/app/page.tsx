@@ -288,9 +288,9 @@ export default function Home() {
       <section id="contact" className="py-20 bg-gray-50" data-testid="contact-section">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-dark mb-4">Get in Touch</h2>
+            <h2 className="text-4xl font-bold text-dark mb-4">{t('contact.title')}</h2>
             <p className="text-xl text-gray-600">
-              Need a licensed electrician in Luxembourg? Contact us today!
+              {t('contact.subtitle')}
             </p>
           </div>
 
