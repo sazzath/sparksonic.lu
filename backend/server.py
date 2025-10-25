@@ -420,38 +420,96 @@ async def get_user_tickets(payload: dict = Depends(verify_token)):
 
 @app.get("/api/reviews")
 async def get_google_reviews():
+    """
+    Fetch Google reviews with caching mechanism.
+    Returns all available reviews (not limited to 5).
+    Cache refreshes every 24 hours automatically.
+    """
     try:
+        # Check cache first
+        cache_entry = reviews_cache_collection.find_one({"type": "google_reviews"})
+        
+        # Check if cache is still valid (less than 24 hours old)
+        if cache_entry and "updated_at" in cache_entry:
+            cache_time = datetime.fromisoformat(cache_entry["updated_at"])
+            if datetime.utcnow() - cache_time < timedelta(hours=24):
+                # Return cached data
+                return {
+                    "rating": cache_entry.get("rating", 5.0),
+                    "total_reviews": cache_entry.get("total_reviews", 0),
+                    "reviews": cache_entry.get("reviews", []),
+                    "cached": True,
+                    "last_updated": cache_entry.get("updated_at")
+                }
+        
+        # Fetch fresh data from Google API
         url = f"https://maps.googleapis.com/maps/api/place/details/json?place_id={GOOGLE_PLACE_ID}&fields=name,rating,reviews,user_ratings_total&key={GOOGLE_API_KEY}"
-        response = requests.get(url)
+        response = requests.get(url, timeout=10)
         data = response.json()
         
         if data.get("status") == "OK":
             result = data.get("result", {})
-            return {
+            reviews_data = {
                 "rating": result.get("rating", 5.0),
                 "total_reviews": result.get("user_ratings_total", 0),
-                "reviews": result.get("reviews", [])[:5]  # Top 5 reviews
+                "reviews": result.get("reviews", [])  # Get ALL reviews (Google returns up to 5 most relevant)
             }
+            
+            # Update cache
+            reviews_cache_collection.update_one(
+                {"type": "google_reviews"},
+                {
+                    "$set": {
+                        "type": "google_reviews",
+                        "rating": reviews_data["rating"],
+                        "total_reviews": reviews_data["total_reviews"],
+                        "reviews": reviews_data["reviews"],
+                        "updated_at": datetime.utcnow().isoformat()
+                    }
+                },
+                upsert=True
+            )
+            
+            reviews_data["cached"] = False
+            reviews_data["last_updated"] = datetime.utcnow().isoformat()
+            return reviews_data
         else:
-            # Return mock data if API fails
+            # If API fails but we have cache, return cache
+            if cache_entry:
+                return {
+                    "rating": cache_entry.get("rating", 5.0),
+                    "total_reviews": cache_entry.get("total_reviews", 0),
+                    "reviews": cache_entry.get("reviews", []),
+                    "cached": True,
+                    "last_updated": cache_entry.get("updated_at")
+                }
+            
+            # Return mock data if no cache and API fails
             return {
                 "rating": 5.0,
-                "total_reviews": 48,
-                "reviews": [
-                    {
-                        "author_name": "John Smith",
-                        "rating": 5,
-                        "text": "Excellent service! Professional team and quality work.",
-                        "time": datetime.utcnow().isoformat()
-                    }
-                ]
+                "total_reviews": 54,
+                "reviews": [],
+                "cached": False
             }
     except Exception as e:
-        print(f"Google Reviews error: {str(e)}")
+        print(f"[ERROR] Google Reviews error: {str(e)}")
+        
+        # Try to return cached data on error
+        cache_entry = reviews_cache_collection.find_one({"type": "google_reviews"})
+        if cache_entry:
+            return {
+                "rating": cache_entry.get("rating", 5.0),
+                "total_reviews": cache_entry.get("total_reviews", 0),
+                "reviews": cache_entry.get("reviews", []),
+                "cached": True,
+                "last_updated": cache_entry.get("updated_at")
+            }
+        
         return {
             "rating": 5.0,
-            "total_reviews": 48,
-            "reviews": []
+            "total_reviews": 54,
+            "reviews": [],
+            "cached": False
         }
 
 # ===========================
