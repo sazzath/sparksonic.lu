@@ -197,37 +197,68 @@ export default function Home() {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-20 bg-gray-50" data-testid="reviews-section">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100" data-testid="reviews-section">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-dark mb-4">{t('reviews.title')}</h2>
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-8 h-8 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              {reviews && (
-                <span className="text-2xl font-bold text-dark">
-                  {reviews.rating} ({reviews.total_reviews} reviews)
-                </span>
-              )}
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-block mb-4">
+              <span className="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">
+                CLIENT TESTIMONIALS
+              </span>
             </div>
-            <p className="text-gray-600">{t('reviews.trusted')}</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-dark mb-6">{t('reviews.title')}</h2>
+            
+            {/* Rating Summary */}
+            {reviews && (
+              <div className="flex flex-col items-center gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-10 h-10 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <div className="text-left">
+                    <div className="text-4xl font-bold text-dark">{reviews.rating}</div>
+                    <div className="text-sm text-gray-600">out of 5</div>
+                  </div>
+                </div>
+                <div className="text-gray-600 text-lg">
+                  Based on <span className="font-bold text-primary">{reviews.total_reviews} reviews</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-500">
+                  <Image 
+                    src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
+                    alt="Google" 
+                    width={60} 
+                    height={20}
+                    className="opacity-75"
+                  />
+                  <span>Verified Reviews</span>
+                </div>
+              </div>
+            )}
+            
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">{t('reviews.trusted')}</p>
           </div>
 
+          {/* Reviews Carousel */}
           {reviews && reviews.reviews && reviews.reviews.length > 0 && (
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={30}
                 slidesPerView={1}
                 navigation
-                pagination={{ clickable: true }}
-                autoplay={{
-                  delay: 5000,
-                  disableOnInteraction: false,
+                pagination={{ 
+                  clickable: true,
+                  dynamicBullets: true
                 }}
+                autoplay={{
+                  delay: 6000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true
+                }}
+                loop={true}
                 breakpoints={{
                   640: {
                     slidesPerView: 1,
@@ -235,41 +266,71 @@ export default function Home() {
                   },
                   768: {
                     slidesPerView: 2,
-                    spaceBetween: 30,
+                    spaceBetween: 25,
                   },
                   1024: {
                     slidesPerView: 3,
                     spaceBetween: 30,
                   },
                 }}
-                className="reviews-swiper pb-12"
+                className="reviews-swiper pb-16"
               >
                 {reviews.reviews.map((review: any, idx: number) => (
                   <SwiperSlide key={idx}>
-                    <div className="bg-white rounded-xl shadow-lg p-6 h-full">
-                      <div className="flex items-center gap-2 mb-4">
+                    <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 p-8 h-full border border-gray-100">
+                      {/* Quote Icon */}
+                      <div className="text-primary text-5xl mb-4 opacity-20">"</div>
+                      
+                      {/* Rating Stars */}
+                      <div className="flex mb-4">
+                        {[...Array(5)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            className={`w-5 h-5 ${i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} 
+                          />
+                        ))}
+                      </div>
+                      
+                      {/* Review Text */}
+                      <p className="text-gray-700 text-base leading-relaxed mb-6 line-clamp-5 min-h-[120px]">
+                        {review.text}
+                      </p>
+                      
+                      {/* Author Info */}
+                      <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
                         <Image
                           src={review.profile_photo_url}
                           alt={review.author_name}
-                          width={48}
-                          height={48}
-                          className="rounded-full"
+                          width={56}
+                          height={56}
+                          className="rounded-full ring-2 ring-primary/20"
                         />
-                        <div>
-                          <div className="font-semibold">{review.author_name}</div>
-                          <div className="flex">
-                            {[...Array(review.rating)].map((_, i) => (
-                              <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                            ))}
+                        <div className="flex-1">
+                          <div className="font-bold text-dark text-lg">{review.author_name}</div>
+                          <div className="text-sm text-gray-500 flex items-center gap-2">
+                            <span>{review.relative_time_description}</span>
+                            <span className="text-gray-300">•</span>
+                            <span className="text-primary">Google Review</span>
                           </div>
                         </div>
                       </div>
-                      <p className="text-gray-700 line-clamp-4">{review.text}</p>
-                      <p className="text-sm text-gray-500 mt-3">{review.relative_time_description}</p>
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
+              
+              {/* View All Reviews Link */}
+              <div className="text-center mt-8">
+                <a
+                  href={`https://search.google.com/local/reviews?placeid=${process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID || 'ChIJMYbHzZr-p2gRxrAjImwlWZY'}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-primary"
+                >
+                  <span>View All {reviews.total_reviews} Reviews on Google</span>
+                  <ArrowRight size={20} />
+                </a>
+              </div>
             </div>
           )}
         </div>
