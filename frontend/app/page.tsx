@@ -216,31 +216,60 @@ export default function Home() {
             <p className="text-gray-600">{t('reviews.trusted')}</p>
           </div>
 
-          {reviews && reviews.reviews && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {reviews.reviews.slice(0, 3).map((review: any, idx: number) => (
-                <div key={idx} className="bg-white rounded-xl shadow-lg p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Image
-                      src={review.profile_photo_url}
-                      alt={review.author_name}
-                      width={48}
-                      height={48}
-                      className="rounded-full"
-                    />
-                    <div>
-                      <div className="font-semibold">{review.author_name}</div>
-                      <div className="flex">
-                        {[...Array(review.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        ))}
+          {reviews && reviews.reviews && reviews.reviews.length > 0 && (
+            <div className="max-w-6xl mx-auto">
+              <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={30}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+                }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                  },
+                }}
+                className="reviews-swiper pb-12"
+              >
+                {reviews.reviews.map((review: any, idx: number) => (
+                  <SwiperSlide key={idx}>
+                    <div className="bg-white rounded-xl shadow-lg p-6 h-full">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Image
+                          src={review.profile_photo_url}
+                          alt={review.author_name}
+                          width={48}
+                          height={48}
+                          className="rounded-full"
+                        />
+                        <div>
+                          <div className="font-semibold">{review.author_name}</div>
+                          <div className="flex">
+                            {[...Array(review.rating)].map((_, i) => (
+                              <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                            ))}
+                          </div>
+                        </div>
                       </div>
+                      <p className="text-gray-700 line-clamp-4">{review.text}</p>
+                      <p className="text-sm text-gray-500 mt-3">{review.relative_time_description}</p>
                     </div>
-                  </div>
-                  <p className="text-gray-700">{review.text}</p>
-                  <p className="text-sm text-gray-500 mt-3">{review.relative_time_description}</p>
-                </div>
-              ))}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           )}
         </div>
