@@ -512,6 +512,45 @@ async def get_google_reviews():
             "cached": False
         }
 
+@app.post("/api/reviews/refresh")
+async def refresh_reviews_cache():
+    """
+    Manually refresh the reviews cache.
+    This endpoint can be called to force update the reviews.
+    """
+    try:
+        url = f"https://maps.googleapis.com/maps/api/place/details/json?place_id={GOOGLE_PLACE_ID}&fields=name,rating,reviews,user_ratings_total&key={GOOGLE_API_KEY}"
+        response = requests.get(url, timeout=10)
+        data = response.json()
+        
+        if data.get("status") == "OK":
+            result = data.get("result", {})
+            reviews_data = {
+                "type": "google_reviews",
+                "rating": result.get("rating", 5.0),
+                "total_reviews": result.get("user_ratings_total", 0),
+                "reviews": result.get("reviews", []),
+                "updated_at": datetime.utcnow().isoformat()
+            }
+            
+            # Update cache
+            reviews_cache_collection.update_one(
+                {"type": "google_reviews"},
+                {"$set": reviews_data},
+                upsert=True
+            )
+            
+            return {
+                "message": "Reviews cache refreshed successfully",
+                "total_reviews": reviews_data["total_reviews"],
+                "reviews_count": len(reviews_data["reviews"])
+            }
+        else:
+            raise HTTPException(status_code=400, detail=f"Google API error: {data.get('status')}")
+            
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 # ===========================
 # Projects Endpoints
 # ===========================
