@@ -56,3 +56,57 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dark);
 }
+
+/* Swiper custom styles for reviews */
+.reviews-swiper .swiper-button-next,
+.reviews-swiper .swiper-button-prev {
+  color: var(--primary);
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.reviews-swiper .swiper-button-next:after,
+.reviews-swiper .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.reviews-swiper .swiper-pagination-bullet {
+  background: var(--primary);
+  opacity: 0.4;
+  width: 10px;
+  height: 10px;
+}
+
+.reviews-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+}
+
+/* WhatsApp button animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Line clamp utility */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
