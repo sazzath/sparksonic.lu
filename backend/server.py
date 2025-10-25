@@ -43,6 +43,7 @@ quotes_collection = db["quotes"]
 tickets_collection = db["tickets"]
 contacts_collection = db["contacts"]
 projects_collection = db["projects"]
+reviews_cache_collection = db["reviews_cache"]
 
 # Security
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
