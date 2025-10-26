@@ -89,16 +89,22 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <div className="space-y-3">
-              <a href="tel:+352661315657" className="flex items-start gap-2 text-gray-400 hover:text-primary transition-colors">
-                <Phone size={18} className="mt-1 flex-shrink-0" />
+              <a href="tel:+352661315657" className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors group">
+                <div className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Phone size={18} className="text-primary" />
+                </div>
                 <span className="text-sm">+352 661 315 657</span>
               </a>
-              <a href="mailto:info@sparksonic.lu" className="flex items-start gap-2 text-gray-400 hover:text-primary transition-colors">
-                <Mail size={18} className="mt-1 flex-shrink-0" />
-                <span className="text-sm">info@sparksonic.lu</span>
+              <a href="mailto:info@sparksonic.lu" className="flex items-center gap-3 text-gray-400 hover:text-primary transition-colors group">
+                <div className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Mail size={18} className="text-primary" />
+                </div>
+                <span className="text-sm break-all">info@sparksonic.lu</span>
               </a>
-              <div className="flex items-start gap-2 text-gray-400">
-                <MapPin size={18} className="mt-1 flex-shrink-0" />
+              <div className="flex items-center gap-3 text-gray-400">
+                <div className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg flex-shrink-0">
+                  <MapPin size={18} className="text-primary" />
+                </div>
                 <span className="text-sm">Luxembourg City<br />Luxembourg</span>
               </div>
             </div>
