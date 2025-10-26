@@ -34,7 +34,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Navigation />
-        <main className="min-h-screen">
+        <main className="min-h-screen pt-[72px] md:pt-[112px]">
           {children}
         </main>
         <Footer />
