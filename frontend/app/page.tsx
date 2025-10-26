@@ -445,27 +445,33 @@ export default function Home() {
               <div className="bg-white rounded-xl shadow-lg p-8">
                 <h3 className="text-2xl font-bold text-dark mb-6">{t('contact.contactInfo')}</h3>
                 <div className="space-y-4">
-                  <a href="tel:+352661315657" className="flex items-start gap-4 hover:text-primary transition-colors">
-                    <Phone className="text-primary mt-1 flex-shrink-0" />
+                  <a href="tel:+352661315657" className="flex items-center gap-4 hover:text-primary transition-colors group">
+                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                      <Phone className="text-primary" size={24} />
+                    </div>
                     <div>
-                      <div className="font-semibold">{t('contact.phone')}</div>
-                      <div className="text-gray-600">+352 661 315 657</div>
+                      <div className="font-semibold text-sm text-gray-600">{t('contact.phone')}</div>
+                      <div className="text-dark font-medium text-lg">+352 661 315 657</div>
                     </div>
                   </a>
 
-                  <a href="mailto:info@sparksonic.lu" className="flex items-start gap-4 hover:text-primary transition-colors">
-                    <Mail className="text-primary mt-1 flex-shrink-0" />
+                  <a href="mailto:info@sparksonic.lu" className="flex items-center gap-4 hover:text-primary transition-colors group">
+                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                      <Mail className="text-primary" size={24} />
+                    </div>
                     <div>
-                      <div className="font-semibold">{t('contact.email')}</div>
-                      <div className="text-gray-600">info@sparksonic.lu</div>
+                      <div className="font-semibold text-sm text-gray-600">{t('contact.email')}</div>
+                      <div className="text-dark font-medium text-lg break-all">info@sparksonic.lu</div>
                     </div>
                   </a>
 
-                  <div className="flex items-start gap-4">
-                    <MapPin className="text-primary mt-1 flex-shrink-0" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg flex-shrink-0">
+                      <MapPin className="text-primary" size={24} />
+                    </div>
                     <div>
-                      <div className="font-semibold">{t('contact.location')}</div>
-                      <div className="text-gray-600">Luxembourg City, Luxembourg</div>
+                      <div className="font-semibold text-sm text-gray-600">{t('contact.location')}</div>
+                      <div className="text-dark font-medium text-lg">Luxembourg City, Luxembourg</div>
                     </div>
                   </div>
                 </div>
